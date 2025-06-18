@@ -26,8 +26,8 @@ def main():
 
         screen.fill("black")  # fill method for surface that fills the surface color to *black*
         pygame.display.flip() # display.flip() which refreshes the screen
-        x = clock.tick(60) # Pausing the game until 1/60 seconds has passed
-        dt = x / 1000 # converting from milisecond to seconds
+        tick = clock.tick(60) # Limiting the game to 40 FPS max, if the fps is higher it pauses the game to slow it down to 40fps. It also returns the miliseconds from past tick.
+        deltaTime = tick / 1000 # converting from milisecond to seconds
 
 
 if __name__ == "__main__":
