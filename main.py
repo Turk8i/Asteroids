@@ -1,6 +1,8 @@
 import pygame
 from constants import *
 from player import *
+from asteroid import *
+from asteroidfield import *
 
 
 
@@ -17,6 +19,18 @@ def main():
     clock = pygame.time.Clock()  # Storing clock object to use its methods like tick()
     deltaTime = 0
 
+    updatable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
+
+    Player.containers = (updatable, drawable)  # all players are tagged as updatable or drawable groups
+
+    Asteroid.containers = (asteroids, updatable, drawable)
+
+    AsteroidField.containers = (updatable)
+
+    astro_field = AsteroidField()
+
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT /2)  # Initiating a Player object with the coordinates of the screen's center
 
 
@@ -30,12 +44,19 @@ def main():
         
 
         screen.fill("black")  # fill method for surface that fills the surface color to *black*
-        player.draw(screen)  # Draws the sprite into the screen *surface*
+        
         
         tick = clock.tick(60) # Limiting the game to 40 FPS max, if the fps is higher it pauses the game to slow it down to 40fps. It also returns the miliseconds from past tick.
         deltaTime = tick / 1000 # converting from milisecond to seconds
 
-        player.update(deltaTime)
+        for obj in updatable:  # Instead of updating and drawing a player, you can update and draw all objects that are in the groups updatable or drawable 
+            obj.update(deltaTime)
+        for draw in drawable:
+            draw.draw(screen)
+
+
+        #player.update(deltaTime)
+        #player.draw(screen)  # Draws the sprite into the screen *surface*
 
 
 
