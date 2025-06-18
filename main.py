@@ -61,6 +61,10 @@ def main():
             if asteroid.collision(player):
                 print("Game Over!")
                 return 
+            for bullet in shots:
+                if asteroid.collision(bullet):
+                    asteroid.split(deltaTime)
+                    bullet.kill()
 
 
         #player.update(deltaTime)
