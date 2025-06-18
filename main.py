@@ -14,10 +14,10 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    clock = pygame.time.Clock()
+    clock = pygame.time.Clock()  # Storing clock object to use its methods like tick()
     deltaTime = 0
 
-    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT /2)
+    player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT /2)  # Initiating a Player object with the coordinates of the screen's center
 
 
     
