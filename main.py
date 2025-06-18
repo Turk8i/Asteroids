@@ -31,9 +31,16 @@ def main():
 
         screen.fill("black")  # fill method for surface that fills the surface color to *black*
         player.draw(screen)  # Draws the sprite into the screen *surface*
-        pygame.display.flip() # display.flip() which refreshes the screen
+        
         tick = clock.tick(60) # Limiting the game to 40 FPS max, if the fps is higher it pauses the game to slow it down to 40fps. It also returns the miliseconds from past tick.
         deltaTime = tick / 1000 # converting from milisecond to seconds
+
+        player.update(deltaTime)
+
+
+
+        pygame.display.flip() # display.flip() which refreshes the screen. LAST METHOD TO DO IN GAME LOOP
+
 
 
 if __name__ == "__main__":
