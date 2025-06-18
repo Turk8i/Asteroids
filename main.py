@@ -34,7 +34,7 @@ def main():
     player = Player(SCREEN_WIDTH/2, SCREEN_HEIGHT /2)  # Initiating a Player object with the coordinates of the screen's center
 
 
-    
+    # GAME LOOP
     while True:
 
         for event in pygame.event.get():
@@ -53,6 +53,11 @@ def main():
             obj.update(deltaTime)
         for draw in drawable:
             draw.draw(screen)
+        
+        for asteroid in asteroids:
+            if asteroid.collision(player):
+                print("Game Over!")
+                return 
 
 
         #player.update(deltaTime)
