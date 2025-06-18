@@ -19,15 +19,18 @@ def main():
     clock = pygame.time.Clock()  # Storing clock object to use its methods like tick()
     deltaTime = 0
 
+
+    # GROUPS ( TAGS )
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
 
+    # CONTAINERS
     Player.containers = (updatable, drawable)  # all players are tagged as updatable or drawable groups
-
     Asteroid.containers = (asteroids, updatable, drawable)
-
     AsteroidField.containers = (updatable)
+    Shot.containers = (shots, updatable, drawable)
 
     astro_field = AsteroidField()
 
